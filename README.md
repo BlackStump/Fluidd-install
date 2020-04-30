@@ -10,6 +10,7 @@ These scripts will install
     * Nginx
     * Nginx config for Mainsail
     * Add the Klipper-API to printer.cfg
+    * Change to Arksine Remote API Branch of Klipper
     
 Cautionary fine print
 I made for my own use and I have tested on a Beaglebone Black but YMMV
@@ -31,5 +32,7 @@ for pi os
 
 ./mainsail-install/nginx-pi_install.sh
 
+If you have not already changed to Arksine's Remote API Branch
 
+./mainsail-install/arksine_install.sh
 
