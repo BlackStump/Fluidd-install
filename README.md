@@ -24,9 +24,11 @@ git clone https://github.com/BlackStump/mainsail-install.git
 ./mainsail-install/pre-install-nginx.sh
 
 for a debian os
+
 ./mainsail-install/nginx-debian_install.sh
 
 for pi os
+
 ./mainsail-install/nginx-pi_install.sh
 
 
