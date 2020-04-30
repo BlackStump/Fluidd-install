@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script installs DWC for Klipper on an debian image
+# This script installs Mainsail for Klipper on an Raspberry Pi image
 #
 
 
