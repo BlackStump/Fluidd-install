@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script installs DWC for Klipper on an debian image
+# This script installs Mainsail for Klipper on an debian image
 #
 
 PYTHONDIR="${HOME}/klippy-env"
@@ -57,16 +57,16 @@ install_script1()
         echo "$FILE does not exist"
         mkdir ~/mainsail
         cd ~/mainsail
-        wget -q -O kwc.zip ${KWC} && unzip kwc.zip && rm kwc.zip
+        wget -q -O mainsail.zip ${KWC} && unzip mainsail.zip && rm mainsail.zip
         cd ~/
      fi
 }
 
 
-# Step 5 add kwc to printer.cfg
-add_kwc()
+# Step 5 add mainsail to printer.cfg
+add_mainsail()
 {
-    report_status "adding kwc to printer.cfg..."
+    report_status "adding mainsail to printer.cfg..."
     FILE="/home/debian/printer.cfg"
     LINE="###~###"
     grep -xqFs -- "$LINE" "$FILE" || echo "$LINE" >> "$FILE"
@@ -121,5 +121,5 @@ stop_klipper
 install_packages
 install_script
 install_script1
-add_kwc
+add_mainsail
 start_klipper
