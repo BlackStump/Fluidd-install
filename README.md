@@ -14,3 +14,20 @@ These scripts will install
 Cautionary fine print
 I made for my own use and I have tested on a Beaglebone Black but YMMV
 I have include a script for the Pi but as I do not have one it is untested.
+
+Usage
+
+cd ~/
+
+git clone https://github.com/BlackStump/mainsail-install.git
+
+./mainsail-install/pre-install-nginx.sh
+
+for a debian os
+./mainsail-install/nginx-debian_install.sh
+
+for pi os
+./mainsail-install/nginx-pi_install.sh
+
+
+
