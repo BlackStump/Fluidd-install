@@ -55,7 +55,7 @@ install_script1()
         echo "$FILE exist"
     else
         echo "$FILE does not exist"
-        mkdir ~/mainsail
+        mkdir ~/mainsail ~/sdcard
         cd ~/mainsail
         wget -q -O mainsail.zip ${KWC} && unzip mainsail.zip && rm mainsail.zip
         cd ~/
