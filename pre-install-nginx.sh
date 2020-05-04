@@ -66,30 +66,18 @@ install_script1()
 # Step 5 add mainsail to printer.cfg
 add_mainsail()
 {
-if
-FILE="/home/debian/printer.cfg"
-    LINE="[virtual_sdcard]"
-    grep -xqFs -- "$LINE" "$FILE"
-    LINE1="path: /home/debian/sdcard"
-    grep -xqFs -- "$LINE1" "$FILE"
-    LINE2="[remote_api]"
-    grep -xqFs -- "$LINE2" "$FILE"
-    LINE3="trusted_clients:"
-    grep -xqFs -- "$LINE3" "$FILE"
-    LINE4="  192.168.2.0/24"
-    grep -xqFs -- "$LINE4" "$FILE"
-    LINE5="  127.0.0.0/24"
-    grep -xqFs -- "$LINE5" "$FILE"
-    LINE6="enable_cors: True"
-    grep -xqFs -- "$LINE6" "$FILE"
-  then
-     echo "files exist"
+  if
+  FILE="/home/debian/printer.cfg"
+  LINE="trusted_clients:"
+    grep -q -- "$LINE" "$FILE"
+      then
+        echo "remote_ip exist"
   else
       sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[virtual_sdcard]\npath: /home/debian/sdcard\n' ~/printer.cfg
       sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[remote_api]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
       sleep 1
-      LINE7="#*# <---------------------- SAVE_CONFIG ---------------------->"
-      grep -xqFs -- "$LINE7" "$FILE" || sed -i '$a[virtual_sdcard]\npath: /home/debian/sdcard\n[remote_api]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
+      LINE1="#*# <---------------------- SAVE_CONFIG ---------------------->"
+      grep -xqFs -- "$LINE1" "$FILE" || sed -i '$a[virtual_sdcard]\npath: /home/debian/sdcard\n[remote_api]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
   fi
 }
 # Step 10: start klipper
