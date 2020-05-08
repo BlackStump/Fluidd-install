@@ -74,10 +74,10 @@ add_mainsail()
         echo "remote_ip exist"
   else
       sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[virtual_sdcard]\npath: /home/debian/sdcard\n' ~/printer.cfg
-      sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[remote_api]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
+      sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[api_server]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
       sleep 1
       LINE1="#*# <---------------------- SAVE_CONFIG ---------------------->"
-      grep -xqFs -- "$LINE1" "$FILE" || sed -i '$a[virtual_sdcard]\npath: /home/debian/sdcard\n[remote_api]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
+      grep -xqFs -- "$LINE1" "$FILE" || sed -i '$a[virtual_sdcard]\npath: /home/debian/sdcard\n[api_server]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
   fi
 }
 # Step 10: start klipper
