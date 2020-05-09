@@ -29,6 +29,8 @@ If you have not already changed to [Arksine's](https://github.com/Arksine/klippe
 
 ./mainsail-install/arksine_install.sh
 
+./mainsail-install/install-moonraker-debian.sh
+
 For RaspberryPi OS
 use the [meteyou](https://github.com/meteyou/mainsail) recommended [Installer](https://github.com/ArmyAg08/mainsail-installer)
 
