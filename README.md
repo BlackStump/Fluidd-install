@@ -23,16 +23,14 @@ git clone https://github.com/BlackStump/mainsail-install.git
 
 ./mainsail-install/pre-install-nginx.sh
 
-for a debian os
+For a Debian OS
 
 ./mainsail-install/nginx-debian_install.sh
-
-for pi os
-
-use the [meteyou](https://github.com/meteyou/mainsail) recommended [Installer](https://github.com/ArmyAg08/mainsail-installer)
-
 
 If you have not already changed to [Arksine's](https://github.com/Arksine/klipper/tree/work-web_server-20200131) Remote API Branch
 
 ./mainsail-install/arksine_install.sh
+
+For RaspberryPi OS
+use the [meteyou](https://github.com/meteyou/mainsail) recommended [Installer](https://github.com/ArmyAg08/mainsail-installer)
 
