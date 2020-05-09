@@ -23,8 +23,6 @@ git clone https://github.com/BlackStump/mainsail-install.git
 
 ./mainsail-install/pre-install-nginx.sh
 
-For a Debian OS
-
 ./mainsail-install/nginx-debian_install.sh
 
 If you have not already changed to [Arksine's](https://github.com/Arksine/klipper/tree/work-web_server-20200131) Remote API Branch
