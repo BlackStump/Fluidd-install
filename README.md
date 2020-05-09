@@ -13,8 +13,7 @@ These scripts will install
     * Change to Arksine Remote API Branch of Klipper
     
 Cautionary fine print
-I made for my own use and I have tested on a Beaglebone Black but YMMV
-I have include a script for the Pi but as I do not have one it is untested.
+I made for my own use and I have tested on a Beaglebone Black with a Debian OS
 
 Usage
 
@@ -30,9 +29,10 @@ for a debian os
 
 for pi os
 
-./mainsail-install/nginx-pi_install.sh
+use the [meteyou](https://github.com/meteyou/mainsail) recommended [Installer](https://github.com/ArmyAg08/mainsail-installer)
 
-If you have not already changed to Arksine's Remote API Branch
+
+If you have not already changed to [Arksine's](https://github.com/Arksine/klipper/tree/work-web_server-20200131) Remote API Branch
 
 ./mainsail-install/arksine_install.sh
 
