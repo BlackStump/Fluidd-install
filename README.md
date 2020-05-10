@@ -5,7 +5,7 @@ Mainsail easy install scripts
 
 These scripts will install
 
-    * Mainsail Ver 0.0.10
+    * Mainsail Ver 0.0.11
     * Tornado
     * Nginx
     * Nginx config for Mainsail
