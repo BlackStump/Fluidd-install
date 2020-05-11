@@ -6,7 +6,7 @@ PYTHONDIR="${HOME}/klippy-env"
 SYSTEMDDIR="/etc/systemd/system"
 KLIPPER_USER=$USER
 KLIPPER_GROUP=$KLIPPER_USER
-KWC="https://github.com/meteyou/mainsail/releases/download/V0.0.11/mainsail-alpha-0.0.11.zip"
+KWC="https://github.com/meteyou/mainsail/releases/download/v0.0.12/mainsail-alpha-0.0.12.zip"
 
 # Step 1: Install system packages
 install_packages()
