@@ -17,7 +17,7 @@ install_script()
     cd ~/klipper
     git remote add arksine https://github.com/Arksine/klipper.git
     git fetch arksine
-    git checkout arksine/work-web_server-20200131
+    git checkout arksine/dev-moonraker-testing
 }
 
 # Step 4: start klipper
