@@ -19,9 +19,7 @@ install_packages()
     PKGLIST="${PKGLIST} tar"
     # Packages for unzip
     PKGLIST="${PKGLIST} unzip"
-    # Packages for nginx
-    PKGLIST="${PKGLIST} nginx"
-
+    
     # Update system package info
     report_status "Running apt-get update..."
     sudo apt-get update
@@ -38,16 +36,8 @@ stop_klipper()
     sudo systemctl stop klipper
 }
 
-# Step 3: Install tornado script
+# Step 3: clone mainsail git
 install_script()
-{
-# install 3 parts
-    report_status "Installing tornado script..."
-    virtualenv ${PYTHONDIR}
-    ${PYTHONDIR}/bin/pip install tornado==5.1.1
-}
-# Step 4: clone mainsail git
-install_script1()
 {
     report_status "installing mainsail "
     FILE=~/mainsail
@@ -71,13 +61,13 @@ add_mainsail()
   LINE="trusted_clients:"
     grep -q -- "$LINE" "$FILE"
       then
-        echo "remote_ip exist"
+        echo "moonraker exist"
   else
       sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[virtual_sdcard]\npath: /home/debian/sdcard\n' ~/printer.cfg
-      sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[api_server]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
+      sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[moonraker]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
       sleep 1
       LINE1="#*# <---------------------- SAVE_CONFIG ---------------------->"
-      grep -xqFs -- "$LINE1" "$FILE" || sed -i '$a[virtual_sdcard]\npath: /home/debian/sdcard\n[api_server]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
+      grep -xqFs -- "$LINE1" "$FILE" || sed -i '$a[virtual_sdcard]\npath: /home/debian/sdcard\n[moonraker]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
   fi
 }
 # Step 10: start klipper
@@ -112,6 +102,5 @@ verify_ready
 stop_klipper
 install_packages
 install_script
-install_script1
 add_mainsail
 start_klipper
