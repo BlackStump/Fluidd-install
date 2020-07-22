@@ -19,13 +19,7 @@ cd ~/
 
 git clone https://github.com/BlackStump/mainsail-install.git
 
-./mainsail-install/pre-install.sh
-
-./mainsail-install/nginx-debian_install.sh
-
-If you have not already changed to [Arksine's](https://github.com/Arksine/klipper/tree/dev-moonraker-testing) Moonraker Branch
-
-./mainsail-install/arksine_install.sh
+./mainsail-install/moonraker-mainsail-install.sh
 
 
 For RaspberryPi OS
