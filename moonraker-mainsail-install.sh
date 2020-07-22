@@ -63,6 +63,7 @@ install-nginxcfg()
         
 NGINXDIR="/etc/nginx/sites-available"
 sudo /bin/sh -c "cat > $NGINXDIR/mainsail-debian" << EOF
+
 map $http_upgrade $connection_upgrade {
     default upgrade;
     '' close;
