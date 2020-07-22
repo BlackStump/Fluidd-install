@@ -8,7 +8,7 @@ These scripts will install
     * Mainsail Ver 0.0.12
     * Nginx config for Mainsail
     * Add the Klipper-API to printer.cfg
-    * Change to Arksine Moonraker Branch of Klipper
+    * Add and Change to a Remote Moonraker Branch of Klipper
     
 Cautionary fine print
 I made for my own use and it is experimental, with possiblility it does not work at all
