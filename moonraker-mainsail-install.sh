@@ -7,7 +7,7 @@ SYSTEMDDIR="/etc/systemd/system"
 MOONRAKER_USER=$USER
 KLIPPER_USER=$USER
 KLIPPER_GROUP=$KLIPPER_USER
-KWC="https://github.com/BlackStump/mainsail-install/releases/download/v0.0.12-alpha/mainsail-v0.0.12-alpha.zip"
+KWC="https://github.com/meteyou/mainsail/releases/download/v0.1.0/mainsail-beta-0.1.0.zip"
 
 # Step 1: Install system packages
 install_packages()
@@ -54,7 +54,7 @@ install_moonraker()
 install-nginxcfg()
 {
   report_status "Installing symbolic link..."
-    FILE=/etc/nginx/sites-available/mainsail-debian
+    FILE=/etc/nginx/sites-available/mainsail
     if [ -e "$FILE" ];
     then
         echo "$FILE exist"
@@ -62,7 +62,7 @@ install-nginxcfg()
         echo "$FILE does not exist"
         
 NGINXDIR="/etc/nginx/sites-available"
-sudo /bin/sh -c "cat > $NGINXDIR/mainsail-debian" << EOF
+sudo /bin/sh -c "cat > $NGINXDIR/mainsail" << EOF
 
 map $http_upgrade $connection_upgrade {
     default upgrade;
@@ -83,7 +83,7 @@ server {
     error_log /var/log/nginx/mainsail-error.log;
 
     #web_path from mainsail static files
-    root /home/debian/mainsail;
+    root ${SRCDIR}/mainsail;
 
     index index.html;
     server_name _;
@@ -148,7 +148,7 @@ server {
 }
 
 EOF
-        sudo ln -s /etc/nginx/sites-available/mainsail-debian /etc/nginx/sites-enabled/
+        sudo ln -s /etc/nginx/sites-available/mainsail/etc/nginx/sites-enabled/
         sudo rm /etc/nginx/sites-enabled/default
         sudo systemctl restart nginx
     fi
@@ -175,17 +175,17 @@ install_mainsail()
 add_mainsail()
 {
   if
-  FILE="/home/debian/printer.cfg"
+  FILE="${SRCDIR}/printer.cfg"
   LINE="trusted_clients:"
     grep -q -- "$LINE" "$FILE"
       then
         echo "moonraker exist"
   else
-      sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[virtual_sdcard]\npath: /home/debian/sdcard\n' ~/printer.cfg
+      sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[virtual_sdcard]\npath: ${SRCDIR}/sdcard\n' ~/printer.cfg
       sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[moonraker]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
       sleep 1
       LINE1="#*# <---------------------- SAVE_CONFIG ---------------------->"
-      grep -xqFs -- "$LINE1" "$FILE" || sed -i '$a[virtual_sdcard]\npath: /home/debian/sdcard\n[moonraker]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
+      grep -xqFs -- "$LINE1" "$FILE" || sed -i '$a[virtual_sdcard]\npath: ${SRCDIR}/sdcard\n[moonraker]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
   fi
 }
 # Step 10: start klipper
