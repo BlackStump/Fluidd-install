@@ -17,7 +17,7 @@ server {
     error_log /var/log/nginx/mainsail-error.log;
 
     #web_path from mainsail static files
-    root ~/mainsail;
+    root /home/debian/mainsail;
 
     index index.html;
     server_name _;
