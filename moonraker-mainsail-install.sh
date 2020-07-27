@@ -62,7 +62,7 @@ install-nginxcfg()
         echo "$FILE does not exist"
         
 NGINXDIR="/etc/nginx/sites-available"
-sudo /bin/sh -c cp ~/mainsail-install/mainsail $NGINXDIR/ 
+sudo /bin/sh -c "cp ~/mainsail-install/mainsail $NGINXDIR/" 
 
         sudo ln -s /etc/nginx/sites-available/mainsail /etc/nginx/sites-enabled/
         sudo rm /etc/nginx/sites-enabled/default
