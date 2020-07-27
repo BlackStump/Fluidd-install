@@ -148,7 +148,7 @@ server {
 }
 
 EOF
-        sudo ln -s /etc/nginx/sites-available/mainsail/etc/nginx/sites-enabled/
+        sudo ln -s /etc/nginx/sites-available/mainsail /etc/nginx/sites-enabled/
         sudo rm /etc/nginx/sites-enabled/default
         sudo systemctl restart nginx
     fi
@@ -181,11 +181,11 @@ add_mainsail()
       then
         echo "moonraker exist"
   else
-      sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[virtual_sdcard]\npath: ${SRCDIR}/sdcard\n' ~/printer.cfg
+      sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[virtual_sdcard]\npath: |${HOME}|/sdcard\n' ~/printer.cfg
       sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[moonraker]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
       sleep 1
       LINE1="#*# <---------------------- SAVE_CONFIG ---------------------->"
-      grep -xqFs -- "$LINE1" "$FILE" || sed -i '$a[virtual_sdcard]\npath: ${SRCDIR}/sdcard\n[moonraker]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
+      grep -xqFs -- "$LINE1" "$FILE" || sed -i '$a[virtual_sdcard]\npath: |${HOME}|/sdcard\n[moonraker]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\n' ~/printer.cfg
   fi
 }
 # Step 10: start klipper
