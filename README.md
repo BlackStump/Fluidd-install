@@ -5,9 +5,9 @@ Mainsail easy install scripts
 
 These scripts will install
 
-    * Mainsail Ver 0.0.12
+    * Mainsail Ver 0.1.1
     * Nginx config for Mainsail
-    * Add the Klipper-API to printer.cfg
+    * Add the Moonraker-API to printer.cfg
     * Add and Change to a Remote Moonraker Branch of Klipper
     
 Cautionary fine print
