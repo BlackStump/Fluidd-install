@@ -7,7 +7,7 @@ SYSTEMDDIR="/etc/systemd/system"
 MOONRAKER_USER=$USER
 KLIPPER_USER=$USER
 KLIPPER_GROUP=$KLIPPER_USER
-KWC="https://github.com/meteyou/mainsail/releases/download/v0.1.2/mainsail-beta-0.1.2.zip"
+KWC="https://github.com/BlackStump/mainsail-install/releases/download/v0.1.12-beta/mainsail-beta-0.01.2.zip"
 
 # Step 1: Install system packages
 install_packages()
