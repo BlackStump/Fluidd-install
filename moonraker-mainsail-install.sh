@@ -91,18 +91,14 @@ install_mainsail()
 add_mainsail()
 {
   if
-  FILE="${SRCDIR}/printer.cfg"
+  FILE="${SRCDIR}/moonraker.conf"
   LINE="trusted_clients:"
     grep -q -- "$LINE" "$FILE"
       then
         echo "moonraker exist"
   else
-      sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[virtual_sdcard]\npath: ~/sdcard\n' ~/printer.cfg
-      sed -i '/#*# <---------------------- SAVE_CONFIG ---------------------->/i[moonraker]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\nconfig_path:  ~/klipper_config\n' ~/printer.cfg
-      sleep 1
-      LINE1="#*# <---------------------- SAVE_CONFIG ---------------------->"
-      grep -xqFs -- "$LINE1" "$FILE" || sed -i '$a[virtual_sdcard]\npath: ~/sdcard\n[moonraker]\ntrusted_clients:\n  192.168.2.0/24\n  127.0.0.0/24\nenable_cors:  True\nconfig_path:  ~/klipper_config\n' ~/printer.cfg
-  fi
+      cp ~/mainsail-install/moonraker.conf ~/moonraker.conf
+      fi
 }
 # Step 10: start klipper
 start_klipper()
