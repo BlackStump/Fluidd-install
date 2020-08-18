@@ -7,7 +7,7 @@ SYSTEMDDIR="/etc/systemd/system"
 MOONRAKER_USER=$USER
 KLIPPER_USER=$USER
 KLIPPER_GROUP=$KLIPPER_USER
-KWC="https://github.com/BlackStump/mainsail-install/releases/download/v0.1.12-beta/mainsail-beta-0.01.3.zip"
+KWC="https://github.com/BlackStump/mainsail-install/releases/download/v0.1.13-beta/mainsail-beta-0.01.3.zip"
 
 # Step 1: Install system packages
 install_packages()
@@ -79,7 +79,7 @@ install_mainsail()
         echo "$FILE exist"
     else
         echo "$FILE does not exist"
-        mkdir ~/mainsail ~/sdcard
+        mkdir ~/mainsail ~/gcodes
         cd ~/mainsail
         wget -q -O mainsail.zip ${KWC} && unzip mainsail.zip && rm mainsail.zip
         cd ~/
