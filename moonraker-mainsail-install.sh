@@ -43,7 +43,7 @@ blkstump()
   ${SRCDIR}/mainsail-install/blackstump.sh
 }
 
-#step 4: install moonraker
+#step 3: install moonraker
 install_moonraker()
 {
   ${SRCDIR}/moonraker/scripts/install-debianmoonraker.sh
@@ -70,7 +70,7 @@ sudo /bin/sh -c "cp /home/debian/mainsail-install/mainsail $NGINXDIR/"
     fi
 }
 
-# Step 5: clone mainsail git
+# Step 4: clone mainsail git
 install_mainsail()
 {
     report_status "installing mainsail "
@@ -100,7 +100,21 @@ add_mainsail()
       cp ~/mainsail-install/moonraker.conf ~/moonraker.conf
       fi
 }
-# Step 10: start klipper
+
+#step 6 make klipper_config directory
+# Step 7: start klipper
+add_klipconf()
+{
+    report_status "make klipper_config directory "
+    FILE=~/klipper_config
+    if [ -d "$FILE" ]; then
+        echo "$FILE exist"
+    else
+        echo "$FILE does not exist"
+        mkdir ~/klipper_config
+        fi
+}        
+
 start_klipper()
 {
     report_status "starting klipper..."
@@ -136,4 +150,5 @@ install_moonraker
 install-nginxcfg
 install_mainsail
 add_mainsail
+add_klipconf
 start_klipper
