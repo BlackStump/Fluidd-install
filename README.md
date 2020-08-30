@@ -5,7 +5,7 @@ Mainsail easy install scripts
 
 These scripts will install
 
-    * Mainsail Ver 0.1.2
+    * Mainsail Ver 0.1.4
     * Nginx config for Mainsail
     * Installs Moonraker
     * Adds Moonraker config
