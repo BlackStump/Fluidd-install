@@ -79,7 +79,7 @@ install_mainsail()
         echo "$FILE exist"
     else
         echo "$FILE does not exist"
-        mkdir ~/mainsail ~/gcodes
+        mkdir ~/mainsail ~/gcode_files
         cd ~/mainsail
         wget -q -O mainsail.zip ${KWC} && unzip mainsail.zip && rm mainsail.zip
         cd ~/
