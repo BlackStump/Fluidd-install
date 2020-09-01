@@ -25,7 +25,5 @@ git clone https://github.com/BlackStump/mainsail-install.git
 For RaspberryPi OS
 use the [meteyou](https://github.com/meteyou/mainsail) recommended [Installer](https://github.com/ArmyAg08/mainsail-installer)
 
-UPDATING FROM A PREVIOUS VERSION ARKSINE BRANCH
 
-[update](https://github.com/meteyou/mainsail#update-mainsail-to-v0010)
 
