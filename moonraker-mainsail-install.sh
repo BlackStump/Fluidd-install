@@ -65,6 +65,7 @@ NGINXDIR="/etc/nginx/sites-available"
 sudo /bin/sh -c "cp /home/debian/mainsail-install/mainsail $NGINXDIR/" 
 
         sudo ln -s /etc/nginx/sites-available/mainsail /etc/nginx/sites-enabled/
+        sudo rm /etc/nginx/sites-available/default
         sudo rm /etc/nginx/sites-enabled/default
         sudo systemctl restart nginx
     fi
