@@ -1,5 +1,5 @@
 # fluidd-install
-Mainsail easy install scripts
+Fluidd easy install scripts
 
 [Fluidd](https://github.com/cadriel/fluidd)
 
