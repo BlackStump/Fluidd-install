@@ -62,7 +62,7 @@ install-nginxcfg()
         echo "$FILE does not exist"
         
 NGINXDIR="/etc/nginx/sites-available"
-sudo /bin/sh -c "cp /home/debian/mainsail-install/mainsail $NGINXDIR/" 
+sudo /bin/sh -c "cp /home/debian/Fluidd-install/mainsail $NGINXDIR/" 
 
         sudo ln -s /etc/nginx/sites-available/mainsail /etc/nginx/sites-enabled/
         sudo rm /etc/nginx/sites-available/default
@@ -74,15 +74,15 @@ sudo /bin/sh -c "cp /home/debian/mainsail-install/mainsail $NGINXDIR/"
 # Step 4: clone mainsail git
 install_mainsail()
 {
-    report_status "installing mainsail "
-    FILE=~/mainsail
+    report_status "installing Fluidd "
+    FILE=~/Fluidd
     if [ -d "$FILE" ]; then
         echo "$FILE exist"
     else
         echo "$FILE does not exist"
-        mkdir ~/mainsail ~/gcode_files
-        cd ~/mainsail
-        wget -q -O mainsail.zip ${KWC} && unzip mainsail.zip && rm mainsail.zip
+        mkdir ~/Fluidd ~/gcode_files
+        cd ~/Fluidd
+        wget -q -O fluidd.zip ${KWC} && unzip fluidd.zip && rm fluidd.zip
         cd ~/
      fi
 }
@@ -98,7 +98,7 @@ add_mainsail()
       then
         echo "moonraker exist"
   else
-      cp ~/mainsail-install/moonraker.conf ~/moonraker.conf
+      cp ~/Fluidd-install/moonraker.conf ~/moonraker.conf
       fi
 }
 
