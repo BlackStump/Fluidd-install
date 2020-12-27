@@ -19,7 +19,7 @@ cd ~/
 
 git clone https://github.com/BlackStump/Fluidd-install.git
 
-./mainsail-install/moonraker-mainsail-install.sh
+./Fluidd-install/moonraker-mainsail-install.sh
 
 
 
