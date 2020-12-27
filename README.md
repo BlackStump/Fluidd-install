@@ -17,7 +17,7 @@ Usage
 
 cd ~/
 
-git clone https://github.com/BlackStump/mainsail-install.git
+git clone https://github.com/BlackStump/Fluidd-install.git
 
 ./mainsail-install/moonraker-mainsail-install.sh
 
