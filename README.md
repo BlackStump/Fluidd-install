@@ -1,12 +1,12 @@
-# mainsail-install
+# fluidd-install
 Mainsail easy install scripts
 
-[Mainsail](https://github.com/meteyou/mainsail)
+[Fluidd](https://github.com/cadriel/fluidd)
 
 These scripts will install
 
-    * Mainsail Ver 0.2.2
-    * Nginx config for Mainsail
+    * Fluidd
+    * Nginx config for Fluidd or Mainsail
     * Installs Moonraker
     * Adds Moonraker config
     
@@ -22,8 +22,7 @@ git clone https://github.com/BlackStump/mainsail-install.git
 ./mainsail-install/moonraker-mainsail-install.sh
 
 
-For RaspberryPi OS
-use the [meteyou](https://github.com/meteyou/mainsail) recommended [Installer](https://github.com/ArmyAg08/mainsail-installer)
+
 
 
 
