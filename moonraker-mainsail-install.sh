@@ -40,7 +40,7 @@ stop_klipper()
 #step 3: run blackstump script
 blkstump()
 {
-  ${SRCDIR}/mainsail-install/blackstump.sh
+  ${SRCDIR}/Fluidd-install/blackstump.sh
 }
 
 #step 3: install moonraker
