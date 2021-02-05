@@ -6,7 +6,7 @@ Fluidd easy install scripts
 These scripts will install
 
     * Fluidd
-    * Nginx config for Fluidd or Mainsail
+    * Nginx config for Fluidd
     * Installs Moonraker
     * Adds Moonraker config
     
