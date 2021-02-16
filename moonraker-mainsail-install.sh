@@ -54,7 +54,7 @@ install_moonraker()
 install-nginxcfg()
 {
   report_status "Installing symbolic link..."
-    FILE=/etc/nginx/sites-available/mainsail
+    FILE=/etc/nginx/sites-available/fluidd
     if [ -e "$FILE" ];
     then
         echo "$FILE exist"
@@ -62,17 +62,21 @@ install-nginxcfg()
         echo "$FILE does not exist"
         
 NGINXDIR="/etc/nginx/sites-available"
-sudo /bin/sh -c "cp /home/debian/Fluidd-install/mainsail $NGINXDIR/" 
+NGINXUPS="/etc/nginx/conf.d/upstreams.conf"
+NGINXVARS="/etc/nginx/conf.d/common_vars.conf"
+sudo /bin/sh -c "cp ${SRCDIR}/Fluidd-install/fluidd $NGINXDIR/"
+sudo /bin/sh -c "cp ${SRCDIR}/Fluidd-install/upstreams.conf $NGINXUPS/"
+sudo /bin/sh -c "cp ${SRCDIR}/Fluidd-install/common_vars.conf $NGINXVARS/"
 
-        sudo ln -s /etc/nginx/sites-available/mainsail /etc/nginx/sites-enabled/
+        sudo ln -s /etc/nginx/sites-available/fluidd /etc/nginx/sites-enabled/
         sudo rm /etc/nginx/sites-available/default
         sudo rm /etc/nginx/sites-enabled/default
         sudo systemctl restart nginx
     fi
 }
 
-# Step 4: clone mainsail git
-install_mainsail()
+# Step 4: clone fluidd
+install_fluidd()
 {
     report_status "installing Fluidd "
     FILE=~/Fluidd
@@ -87,23 +91,7 @@ install_mainsail()
      fi
 }
 
-
-# Step 5 add mainsail to printer.cfg
-add_mainsail()
-{
-  if
-  FILE="${SRCDIR}/moonraker.conf"
-  LINE="trusted_clients:"
-    grep -q -- "$LINE" "$FILE"
-      then
-        echo "moonraker exist"
-  else
-      cp ~/Fluidd-install/moonraker.conf ~/moonraker.conf
-      fi
-}
-
-#step 6 make klipper_config directory
-# Step 7: start klipper
+#step 5 make klipper_config directory
 add_klipconf()
 {
     report_status "make klipper_config directory "
@@ -114,7 +102,21 @@ add_klipconf()
         echo "$FILE does not exist"
         mkdir ~/klipper_config
         fi
-}        
+}
+
+# Step 6 add moonraker.conf
+add_moon()
+{
+  if
+  FILE="${SRCDIR}/moonraker.conf"
+  LINE="trusted_clients:"
+    grep -q -- "$LINE" "$FILE"
+      then
+        echo "moonraker exist"
+  else
+      cp ~/Fluidd-install/moonraker.conf ~/klipper_config/moonraker.conf
+      fi
+}
 
 start_klipper()
 {
@@ -149,7 +151,7 @@ install_packages
 blkstump
 install_moonraker
 install-nginxcfg
-install_mainsail
-add_mainsail
+install_fluidd
 add_klipconf
+add_moon
 start_klipper
