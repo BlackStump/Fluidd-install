@@ -62,8 +62,8 @@ install-nginxcfg()
         echo "$FILE does not exist"
         
 NGINXDIR="/etc/nginx/sites-available"
-NGINXUPS="/etc/nginx/conf.d/upstreams.conf"
-NGINXVARS="/etc/nginx/conf.d/common_vars.conf"
+NGINXUPS="/etc/nginx/conf.d/"
+NGINXVARS="/etc/nginx/conf.d/"
 sudo /bin/sh -c "cp ${SRCDIR}/Fluidd-install/fluidd $NGINXDIR/"
 sudo /bin/sh -c "cp ${SRCDIR}/Fluidd-install/upstreams.conf $NGINXUPS/"
 sudo /bin/sh -c "cp ${SRCDIR}/Fluidd-install/common_vars.conf $NGINXVARS/"
@@ -108,7 +108,7 @@ add_klipconf()
 add_moon()
 {
   if
-  FILE="${SRCDIR}/moonraker.conf"
+  FILE="${SRCDIR}/klipper_config/moonraker.conf"
   LINE="trusted_clients:"
     grep -q -- "$LINE" "$FILE"
       then
