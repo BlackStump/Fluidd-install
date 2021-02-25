@@ -46,7 +46,7 @@ blkstump()
 #step 3: install moonraker
 install_moonraker()
 {
-  ${SRCDIR}/moonraker/scripts/install-debianmoonraker.sh
+  ${SRCDIR}/moonraker/scripts/install-moonraker.sh
   cd ~/
 }
 
