@@ -8,7 +8,7 @@ clone_gits()
 {
     report_status "cloning gits..."
     cd ~/
-    git clone https://github.com/BlackStump/moonraker.git
+    git clone https://github.com/Arksine/moonraker.git
 }
 
 # Step 2: change to blackstump klipper
