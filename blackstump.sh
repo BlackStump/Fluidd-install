@@ -2,23 +2,63 @@
 # This script installs Moonraker for Klipper on an debian image
 #
 
+PYTHONDIR="${HOME}/klippy-env"
+SYSTEMDDIR="/etc/systemd/system"
+KLIPPER_USER=$USER
+KLIPPER_GROUP=$KLIPPER_USER
 
-# Step 1: install dependant gits
-clone_gits()
+# Step 1: Install startup script
+install_script()
 {
-    report_status "cloning gits..."
-    cd ~/
-    git clone https://github.com/Arksine/moonraker.git
+# Create systemd service file
+    KLIPPER_LOG=/tmp/klippy.log
+    report_status "Installing system start script..."
+    sudo /bin/sh -c "cat > $SYSTEMDDIR/klipper.service" << EOF
+#Systemd service file for klipper
+[Unit]
+Description=Starts klipper on startup
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+User=$KLIPPER_USER
+ExecStart=${PYTHONDIR}/bin/python ${SRCDIR}/klippy/klippy.py ${HOME}/klipper_config/printer.cfg -l ${KLIPPER_LOG} -a /tmp/klippy_uds
+Restart=always
+RestartSec=5
+EOF
+# Use systemctl to enable the klipper systemd service script
+    sudo systemctl enable klipper.service
 }
 
-# Step 2: change to blackstump klipper
-install_kbranch()
+# Step 2: Install linux mcu startup script
+install_script1()
 {
-    report_status "Installing Moonraker Remote_API Branch..."
-    cd ~/klipper
-    git remote add blackstump https://github.com/BlackStump/klipper.git
-    git fetch blackstump
-    git checkout blackstump/ms-ar
+# Create systemd service file
+    PIDFILE=/var/run/klipper_mcu.pid
+    report_status "Installing linux mcu system start script1..."
+    sudo /bin/sh -c "cat > $SYSTEMDDIR/klipper_host_mcu.service" << EOF
+#Systemd service file for klipper-linux-host-mcu
+[Unit]
+Description=klipper linux host
+Requires=klipper.service
+After=klipper.service
+BindsTo=klipper.service
+
+[Service]
+Type=simple
+User=$KLIPPER_USER
+ExecStart=/usr/local/bin/klipper_mcu
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=klipper.service
+EOF
+# Use systemctl to enable the klipper systemd service script
+    sudo systemctl enable klipper_host_mcu.service
 }
 
 # Helper functions
@@ -35,10 +75,13 @@ verify_ready()
     fi
 }
 
+# Force script to exit if an error occurs
+set -e
+
+# Find SRCDIR from the pathname of this script
+SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
 
 # Run installation steps defined above
 verify_ready
-clone_gits
-install_kbranch
-
-
+install_script
+install_script1
