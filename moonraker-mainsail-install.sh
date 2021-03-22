@@ -127,6 +127,13 @@ add_moon()
       fi
 }
 
+# step 7 update klipper service
+add_klipserv()
+{
+    report_status "update klipper service....."
+    ${SRCDIR}/Fluidd-install/blackstump.sh
+}    
+
 start_klipper()
 {
     report_status "starting klipper..."
@@ -163,4 +170,5 @@ install-nginxcfg
 install_fluidd
 add_klipconf
 add_moon
+add_klipserv
 start_klipper
