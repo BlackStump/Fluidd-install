@@ -37,16 +37,24 @@ stop_klipper()
     sudo systemctl stop klipper
 }
 
-#step 3: run blackstump script
-blkstump()
+#step 3: clone moonraker script
+clone_moon()
 {
-  ${SRCDIR}/Fluidd-install/blackstump.sh
+    report_status "cloning moonraker..."
+     FILE=~/moonraker
+    if [ -e "$FILE" ];
+    then
+        echo "$FILE exist"
+    else
+        echo "$FILE does not exist"
+    cd ~/
+    git clone https://github.com/Arksine/moonraker.git
 }
 
 #step 3: install moonraker
 install_moonraker()
 {
-  ${SRCDIR}/moonraker/scripts/install-moonraker.sh
+  ${SRCDIR}/moonraker/scripts/install-moonraker.sh -f -c /home/pi/klipper_config/moonraker.conf
   cd ~/
 }
 
@@ -148,7 +156,7 @@ SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
 verify_ready
 stop_klipper
 install_packages
-blkstump
+clone_moon
 install_moonraker
 install-nginxcfg
 install_fluidd
