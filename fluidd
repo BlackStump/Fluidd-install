@@ -16,7 +16,7 @@ server {
     gzip_types text/plain text/css text/xml text/javascript application/x-javascript application/json application/xml;
 
     #web_path from fluidd static files
-    root /home/opi/Fluidd;
+    root /home/pi/Fluidd;
 
     index index.html;
     server_name _;
