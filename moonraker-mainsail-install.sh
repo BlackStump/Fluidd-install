@@ -49,6 +49,7 @@ clone_moon()
         echo "$FILE does not exist"
     cd ~/
     git clone https://github.com/Arksine/moonraker.git
+    fi
 }
 
 #step 3: install moonraker
