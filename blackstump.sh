@@ -7,6 +7,18 @@ SYSTEMDDIR="/etc/systemd/system"
 KLIPPER_USER=$USER
 KLIPPER_GROUP=$KLIPPER_USER
 
+# Step 1: Check for Klipper Service
+check_klipper()
+{
+    if [ "$(systemctl list-units --full -all -t service --no-legend | grep -F "klipper.service")" ]; then
+        echo "Klipper service found!"
+        sudo /bin/sh -c rm $SYSTEMDDIR/klipper.service 
+    else
+        echo "Klipper service not found, please install Klipper first"
+    fi
+
+}
+
 # Step 1: Install startup script
 install_script()
 {
