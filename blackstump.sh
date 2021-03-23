@@ -37,7 +37,6 @@ WantedBy=multi-user.target
 [Service]
 Type=simple
 User=$KLIPPER_USER
-RemainAfterExit=yes
 ExecStart=${PYTHONDIR}/bin/python ${HOME}/klipper/klippy/klippy.py ${HOME}/klipper_config/printer.cfg -l ${KLIPPER_LOG} -a /tmp/klippy_uds
 Restart=always
 RestartSec=5
