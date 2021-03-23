@@ -14,6 +14,7 @@ check_klipper()
         echo "Klipper service found!"
     else
         echo "Klipper service not found, please install Klipper first"
+        exit -1
     fi
 
 }
