@@ -88,13 +88,13 @@ sudo /bin/sh -c "cp ${SRCDIR}/Fluidd-install/common_vars.conf $NGINXVARS/"
 install_fluidd()
 {
     report_status "installing Fluidd "
-    FILE=~/Fluidd
+    FILE=~/fluidd
     if [ -d "$FILE" ]; then
         echo "$FILE exist"
     else
         echo "$FILE does not exist"
-        mkdir ~/Fluidd ~/gcode_files
-        cd ~/Fluidd
+        mkdir ~/fluidd ~/gcode_files
+        cd ~/fluidd
         wget -q -O fluidd.zip ${KWC} && unzip fluidd.zip && rm fluidd.zip
         cd ~/
      fi
