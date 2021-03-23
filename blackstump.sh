@@ -43,6 +43,7 @@ RestartSec=5
 EOF
 # Use systemctl to enable the klipper systemd service script
     sudo systemctl enable klipper.service
+    sudo systemctl daemon-reload
 }
 
 # Step 2: Install linux mcu startup script
@@ -95,5 +96,6 @@ SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
 
 # Run installation steps defined above
 verify_ready
+check_klipper
 install_script
 install_script1
