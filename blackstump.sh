@@ -12,7 +12,7 @@ check_klipper()
 {
     if [ "$(systemctl list-units --full -all -t service --no-legend | grep -F "klipper.service")" ]; then
         echo "Klipper service found!"
-        sudo /bin/sh -c rm $SYSTEMDDIR/klipper.service 
+        sudo rm $SYSTEMDDIR/klipper.service 
     else
         echo "Klipper service not found, please install Klipper first"
     fi
