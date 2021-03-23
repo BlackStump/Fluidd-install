@@ -12,7 +12,6 @@ check_klipper()
 {
     if [ "$(systemctl list-units --full -all -t service --no-legend | grep -F "klipper.service")" ]; then
         echo "Klipper service found!"
-        sudo rm $SYSTEMDDIR/klipper.service 
     else
         echo "Klipper service not found, please install Klipper first"
     fi
@@ -38,7 +37,7 @@ WantedBy=multi-user.target
 Type=simple
 User=$KLIPPER_USER
 RemainAfterExit=yes
-ExecStart=${PYTHONDIR}/bin/python ${SRCDIR}/klippy/klippy.py ${HOME}/klipper_config/printer.cfg -l ${KLIPPER_LOG} -a /tmp/klippy_uds
+ExecStart=${PYTHONDIR}/bin/python ${HOME}/klipper/klippy/klippy.py ${HOME}/klipper_config/printer.cfg -l ${KLIPPER_LOG} -a /tmp/klippy_uds
 Restart=always
 RestartSec=5
 EOF
