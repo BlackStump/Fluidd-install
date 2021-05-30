@@ -7,7 +7,7 @@ SYSTEMDDIR="/etc/systemd/system"
 MOONRAKER_USER=$USER
 KLIPPER_USER=$USER
 KLIPPER_GROUP=$KLIPPER_USER
-KWC="https://github.com/cadriel/fluidd/releases/download/v1.12.2/fluidd.zip"
+KWC="https://github.com/cadriel/fluidd/releases/download/v1.14.0/fluidd.zip"
 
 # Step 1: Install system packages
 install_packages()
