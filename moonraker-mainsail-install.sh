@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script installs Mainsail for Klipper on an debian image
+# This script installs Fluidd for Klipper on an debian image
 #
 
 PYTHONDIR="${HOME}/klippy-env"
